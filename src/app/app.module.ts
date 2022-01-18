@@ -12,12 +12,12 @@ import {authInterceptorProviders} from './helpers/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent
+    UserListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    LoginComponent,
+    AppRoutingModule,    
     FormsModule,
     HttpClientModule
   ],
