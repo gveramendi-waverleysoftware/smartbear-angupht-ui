@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { first } from 'rxjs/operators';
 import { DatePipe } from '@angular/common'
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-user-create',
@@ -31,7 +32,8 @@ export class UserCreateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
@@ -72,6 +74,9 @@ export class UserCreateComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
 
+    // reset alerts on submit
+    this.alertService.clear();
+
     // stop here if form is invalid
     if (this.form.invalid) {
       return;
@@ -90,9 +95,11 @@ export class UserCreateComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: () => {
+          this.alertService.success('User added successfully', { keepAfterRouteChange: true });
           this.router.navigate(['../'], { relativeTo: this.route });
         },
         error: error => {
+          this.alertService.error(error);
           this.loading = false;
         }
       });
@@ -103,9 +110,11 @@ export class UserCreateComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: () => {
+          this.alertService.success('Update successful', { keepAfterRouteChange: true });
           this.router.navigate(['../'], { relativeTo: this.route });
         },
         error: error => {
+          this.alertService.error(error);
           this.loading = false;
         }
       });
