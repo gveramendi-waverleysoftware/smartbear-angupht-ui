@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Constants } from '../helpers/constants';
 
 // TODO change url API
-const baseUrl = "http://localhost:3000/users/";
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +11,12 @@ const baseUrl = "http://localhost:3000/users/";
 export class UserService {
 
   constructor(
-    private httpClient:HttpClient
+    private httpClient:HttpClient,
+    private constants:Constants
   ) { }
 
   listAll(): Observable<any> {
-    return this.httpClient.get(baseUrl);
+    return this.httpClient.get(this.constants.API_ENDPOINT + '/users');
   }
 
 }

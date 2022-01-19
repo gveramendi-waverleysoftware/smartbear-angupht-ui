@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Constants } from '../helpers/constants';
 
-const AUTH_API = '';
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable({
@@ -12,17 +12,17 @@ const httpOptions = {
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
-  login(username:string,password:string):Observable<any>{
-    return this.http.post(AUTH_API + '', {
+  constructor(private http: HttpClient, private constants: Constants) { }
+  login(username: string, password: string): Observable<any> {
+    return this.http.post(this.constants.API_ENDPOINT + '', {
       username,
       password
-    },httpOptions);
+    }, httpOptions);
   }
-  register(username:string,password:string):Observable<any>{
-    return this.http.post(AUTH_API + '', {
+  register(username: string, password: string): Observable<any> {
+    return this.http.post(this.constants.API_ENDPOINT + '', {
       username,
       password
-    },httpOptions);
+    }, httpOptions);
   }
 }
