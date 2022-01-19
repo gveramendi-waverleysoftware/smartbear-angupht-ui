@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { Constants } from './helpers/constants';
 
 import { LoginComponent } from './components/login/login.component';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
@@ -21,7 +22,7 @@ import {authInterceptorProviders} from './helpers/auth.interceptor';
     FormsModule,
     HttpClientModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,Constants],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
