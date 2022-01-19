@@ -9,12 +9,14 @@ import { Constants } from './helpers/constants';
 
 import { LoginComponent } from './components/login/login.component';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
