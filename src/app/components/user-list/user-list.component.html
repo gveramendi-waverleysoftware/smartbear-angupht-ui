@@ -17,7 +17,7 @@
             <td>{{user.email}}</td>
             <td>{{(user.createdAt | date:'fullDate')}}</td>
             <td style="white-space: nowrap">
-                <a routerLink="edit/{{user.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <a routerLink="{{user.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
                 <button  class="btn btn-sm btn-danger btn-delete-user" >
                     <span *ngIf="!user.isDeleting">Delete</span>
                 </button>

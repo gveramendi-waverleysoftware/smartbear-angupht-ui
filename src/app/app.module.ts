@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,21 +10,25 @@ import { Constants } from './helpers/constants';
 import { LoginComponent } from './components/login/login.component';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
 import { HomeComponent } from './components/home/home.component';
+import { DatePipe } from '@angular/common';
+import { UserCreateComponent } from './components/user-create/user-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,    
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [authInterceptorProviders,Constants],
+  providers: [authInterceptorProviders,Constants,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
