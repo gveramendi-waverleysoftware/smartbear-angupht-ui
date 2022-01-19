@@ -1,0 +1,54 @@
+body {
+  background-color: #fef9ef !important;
+}
+
+button {
+  border-radius: 15px !important;
+  border: 0px solid !important;
+  box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+  -webkit-box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+  -moz-box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+}
+input {
+  border-radius: 15px !important;
+  border: 0px solid;
+  box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+  -webkit-box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+  -moz-box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+}
+
+.modal {
+  border-radius: 15px !important;
+  box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+  -webkit-box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+  -moz-box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+  background-color: #f7f6f3 !important;
+}
+.nav-bar {
+  border-radius: 100px !important;
+  box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+  -webkit-box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+  -moz-box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+  background-color: #f7f6f3 !important;
+}
+
+.drop-down {
+  border-radius: 15px !important;
+  border: 0px solid;
+  background-color: #ecf0ef !important; 
+  box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+  -webkit-box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+  -moz-box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.44);
+}
+
+.yellow-btn {
+  background-color: #fffc3d !important;
+}
+
+.red-btn {
+  background-color: #ff3d67 !important;
+}
+
+.green-btn {
+  background-color: #06d6a0 !important; 
+}
