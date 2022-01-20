@@ -45,17 +45,18 @@ export class RegisterComponent implements OnInit {
   }
 
   registerFormSubmit(): void {
-    if (this.registerForm.invalid) {
+    const formData = this.registerForm.value;
+    if (this.registerForm.invalid || (formData.password != formData.password1)) {
       return;
     }
-    const formData = this.registerForm.value;
+    
     delete formData.password1;
     this.alertService.clear();
     
     this.registerUser(formData); 
   }
   registerUser(data: any): void {
-    this.userService.create(data)
+    this.userService.register(data)
       .pipe(first())
       .subscribe({
         next: () => {
@@ -63,6 +64,7 @@ export class RegisterComponent implements OnInit {
           this.closeModal();
         },
         error: error => {
+          console.log("error:",error);
           this.alertService.error(error.message);
         }
       });
