@@ -29,6 +29,6 @@ export class AuthService {
     return this.http.post(this.constants.API_ENDPOINT + '/users/change_password/' + id, change, httpOptions);
   }
   currentUSer(): Observable<any> {
-    return this.http.get(this.constants.API_ENDPOINT + '/users/currentuser');
+    return this.http.get(this.constants.API_ENDPOINT + '/users/current_user');
   }
 }
