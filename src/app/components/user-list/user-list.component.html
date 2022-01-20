@@ -21,6 +21,15 @@
                 <button (click)="deleteUser(user.id, user.firstName,user.lastName)" class="btn btn-sm btn-danger btn-delete-user" >
                     <span>Delete</span>
                 </button>
+                <button
+                class="btn btn-sm btn-delete-user todo-modal-btn"
+                (click)="openToDoModal(user.id)"
+              >
+                <span>{{userTodo?.includes(user.id) ? 'Close' :'Open'}} To Do List</span>
+              </button>
+            <div id="comp-render" *ngIf="userTodo?.includes(user.id)">
+              <app-todo-modal [user]="user.id"></app-todo-modal>
+            </div>
             </td>
         </tr>
         <tr *ngIf="!users">

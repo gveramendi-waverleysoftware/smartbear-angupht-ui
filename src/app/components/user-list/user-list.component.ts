@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { first } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TodoModalComponent } from '../todo-modal/todo-modal.component';
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -9,10 +11,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserListComponent implements OnInit {
   users: any;
-
+  displayModal: Boolean;
+  userTodo: any;
   constructor(
     private userService: UserService
-  ) { }
+  ) { 
+    this.displayModal = false;
+  }
+
 
   ngOnInit(): void {
     this.listUsers();
@@ -33,4 +39,17 @@ export class UserListComponent implements OnInit {
     }
     
   }
+  openToDoModal(userId: any) {
+    const userModal: any = [];
+    if (this.userTodo?.includes(userId)) {
+      userModal.pop();
+      console.log(userModal);
+    } else {
+      userModal?.push(userId);
+    }
+
+    this.userTodo = userModal;
+    this.displayModal = !this.displayModal;
+  }
+
 }

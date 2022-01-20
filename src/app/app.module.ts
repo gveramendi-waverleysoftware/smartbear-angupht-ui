@@ -18,6 +18,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RegisterComponent } from './components/register/register.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { TodoModalComponent } from './components/todo-modal/todo-modal.component';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     AlertComponent,
     RegisterComponent,
     ChangePasswordComponent
+    TodoModalComponent
   ],
   imports: [
     BrowserModule,
