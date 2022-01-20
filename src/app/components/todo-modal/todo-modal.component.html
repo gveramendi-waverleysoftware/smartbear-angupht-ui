@@ -1,0 +1,29 @@
+<div tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header"></div>
+        <h5 class="form-control modal-title"><strong>To-Do List</strong></h5>
+        <div class="modal-body">
+          <input
+            type="text"
+            [(ngModel)]="toDo"
+            class="form-control"
+            placeholder="Type a task for the user"
+          />
+          <div *ngFor="let task of userTask">
+            <div>
+              <span>{{ task }}</span>
+              <button type="button" class="btn btn-danger delete-modal" (click)="deleteTask(task)">
+                  Delete
+                </button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="addTask(user)">
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
