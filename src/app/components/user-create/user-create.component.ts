@@ -14,11 +14,11 @@ import { AlertService } from 'src/app/services/alert.service';
 export class UserCreateComponent implements OnInit {
 
   form: any = {
-    firstName: null,
-    lastName: null,
+    first_name: null,
+    last_name: null,
     email: null,
     password: null,
-    birthday: this.datepipe.transform('01-01-1960', 'yyyy-MM-dd'),
+    birthday: null,
     address: null
   };
   id!: string;
@@ -47,8 +47,8 @@ export class UserCreateComponent implements OnInit {
     }
 
     this.form = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', passwordValidators],
       birthday: [this.datepipe.transform('01-01-1960', 'yyyy-MM-dd'), Validators.required],
@@ -60,10 +60,14 @@ export class UserCreateComponent implements OnInit {
         .pipe(first())
         .subscribe((user) => {
           this.user = user;
-          this.form.patchValue(this.user.user);
-          console.log('USERs', this.user.user)
+          this.form.patchValue(this.user);
+          this.form.birthday = this.datepipe.transform(this.user.birthday.toString(), 'yyyy-MM-dd');
+
+          console.log('USERs', this.user.birthday);
+          console.log('USER1', this.form.birthday);
         });
     }
+    
 
   }
 
@@ -99,7 +103,7 @@ export class UserCreateComponent implements OnInit {
           this.router.navigate(['../'], { relativeTo: this.route });
         },
         error: error => {
-          this.alertService.error(error);
+          this.alertService.error(error.message);
           this.loading = false;
         }
       });
@@ -114,7 +118,7 @@ export class UserCreateComponent implements OnInit {
           this.router.navigate(['../'], { relativeTo: this.route });
         },
         error: error => {
-          this.alertService.error(error);
+          this.alertService.error(error.message);
           this.loading = false;
         }
       });
