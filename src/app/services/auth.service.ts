@@ -15,15 +15,20 @@ export class AuthService {
   constructor(private http: HttpClient, private constants: Constants) { }
   login(username: string, password: string): Observable<any> {
     const auth = {
-      email:username,
-      password:password
+      email: username,
+      password: password
     }
     return this.http.post(this.constants.API_ENDPOINT + '/login', auth, httpOptions);
   }
-  register(username: string, password: string): Observable<any> {
-    return this.http.post(this.constants.API_ENDPOINT + '', {
-      username,
-      password
-    }, httpOptions);
+  changePassword(id: number, newPassword: string, confirmPassword: string, oldPassword: string): Observable<any> {
+    const change = {
+      password: newPassword,
+      password2: confirmPassword,
+      oldPassword: oldPassword
+    }
+    return this.http.post(this.constants.API_ENDPOINT + '/users/change_password/' + id, change, httpOptions);
+  }
+  currentUSer(): Observable<any> {
+    return this.http.get(this.constants.API_ENDPOINT + '/users/currentuser');
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 import { TokenStorageService } from './services/token-storage.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { RegisterComponent } from './components/register/register.component';
@@ -9,10 +10,12 @@ import { RegisterComponent } from './components/register/register.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  isLoggedIn=false;
+  isLoggedIn = false;
   title = 'smartbear-anguphy-ui';
+  user = '';
   constructor(
-    private tokenStorageService: TokenStorageService,
+    private tokenStorageService: TokenStorageService, 
+    private authService: AuthService,
     public matDialog: MatDialog
   ) { }
 
@@ -20,8 +23,15 @@ export class AppComponent {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
-      //const user = this.tokenStorageService.getUser();
-      //this.username = user.username;
+      this.authService.currentUSer().subscribe({
+        next: data => {
+          this.user = data.email;
+          console.log(data);
+        },
+        error: err => {
+          console.log(err);
+        }
+      })
     }
   }
 
