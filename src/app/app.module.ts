@@ -12,6 +12,7 @@ import {authInterceptorProviders} from './helpers/auth.interceptor';
 import { HomeComponent } from './components/home/home.component';
 import { DatePipe } from '@angular/common';
 import { UserCreateComponent } from './components/user-create/user-create.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { UserCreateComponent } from './components/user-create/user-create.compon
     UserListComponent,
     LoginComponent,
     HomeComponent,
-    UserCreateComponent
+    UserCreateComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
