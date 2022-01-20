@@ -14,10 +14,11 @@ export class AuthService {
 
   constructor(private http: HttpClient, private constants: Constants) { }
   login(username: string, password: string): Observable<any> {
-    return this.http.post(this.constants.API_ENDPOINT + '', {
-      username,
-      password
-    }, httpOptions);
+    const auth = {
+      email:username,
+      password:password
+    }
+    return this.http.post(this.constants.API_ENDPOINT + '/login', auth, httpOptions);
   }
   register(username: string, password: string): Observable<any> {
     return this.http.post(this.constants.API_ENDPOINT + '', {
