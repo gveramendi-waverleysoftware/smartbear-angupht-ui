@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { RegisterComponent } from './components/register/register.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { TodoModalComponent } from './components/todo-modal/todo-modal.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { TodoModalComponent } from './components/todo-modal/todo-modal.component
     AlertComponent,
     RegisterComponent,
     ChangePasswordComponent,
-    TodoModalComponent
+    TodoModalComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
