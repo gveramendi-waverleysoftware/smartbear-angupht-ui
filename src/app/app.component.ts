@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 import { TokenStorageService } from './services/token-storage.service';
 
 @Component({
@@ -7,16 +8,24 @@ import { TokenStorageService } from './services/token-storage.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  isLoggedIn=false;
+  isLoggedIn = false;
   title = 'smartbear-anguphy-ui';
-  constructor(private tokenStorageService: TokenStorageService) { }
+  user = '';
+  constructor(private tokenStorageService: TokenStorageService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
-      //const user = this.tokenStorageService.getUser();
-      //this.username = user.username;
+      this.authService.currentUSer().subscribe({
+        next: data => {
+          this.user = data.email;
+          console.log(data);
+        },
+        error: err => {
+          console.log(err);
+        }
+      })
     }
   }
 
