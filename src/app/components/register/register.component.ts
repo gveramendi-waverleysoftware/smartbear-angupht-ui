@@ -12,8 +12,8 @@ import { first } from 'rxjs/operators';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup = this.fb.group({
-    firstName: ['', [Validators.required]],
-    lastName: ['', [Validators.required]],
+    first_name: ['', [Validators.required]],
+    last_name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
     password1: ['', [Validators.required, Validators.minLength(8)]]
@@ -28,11 +28,11 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  get firstName(): any {
-    return this.registerForm.get('firstName');
+  get first_name(): any {
+    return this.registerForm.get('first_name');
   }
-  get lastName(): any {
-    return this.registerForm.get('lastName');
+  get last_name(): any {
+    return this.registerForm.get('last_name');
   }
   get email(): any {
     return this.registerForm.get('email');
@@ -56,6 +56,7 @@ export class RegisterComponent implements OnInit {
     this.registerUser(formData); 
   }
   registerUser(data: any): void {
+    console.log(JSON.stringify(data));
     this.userService.register(data)
       .pipe(first())
       .subscribe({

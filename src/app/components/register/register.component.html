@@ -18,14 +18,14 @@
             </div>
             <div class="col-md-6">
                 <label for="id_firstName" class="form-label">First name</label>
-                <input formControlName="firstName" type="text" class="form-control" id="id_firstName" required>
-                <div *ngIf="firstName.touched && firstName.errors?.required" class="d-block invalid-feedback">
+                <input formControlName="first_name" type="text" class="form-control" id="id_firstName" required>
+                <div *ngIf="first_name.touched && first_name.errors?.required" class="d-block invalid-feedback">
                     Provide your first name.</div>
             </div>
             <div class="col-md-6">
                 <label for="id_lastName" class="form-label">Last name</label>
-                <input type="text" class="form-control" formControlName="lastName" id="id_lastName" required>
-                <div *ngIf="lastName.touched && lastName.errors?.required" class="d-block invalid-feedback">Provide
+                <input type="text" class="form-control" formControlName="last_name" id="id_lastName" required>
+                <div *ngIf="last_name.touched && last_name.errors?.required" class="d-block invalid-feedback">Provide
                     your last name.</div>
             </div>
             <div class="col-md-6">
