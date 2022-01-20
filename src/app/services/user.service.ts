@@ -18,7 +18,7 @@ export class UserService {
   }
 
   create(data: any): Observable<any> {
-    return this.httpClient.post(this.constants.API_ENDPOINT + '/users', data);
+    return this.httpClient.post(this.constants.API_ENDPOINT + '/users/create', data);
   }
 
   getById(id: string) {
@@ -26,16 +26,21 @@ export class UserService {
   }
 
   update(id: string, params: any) {
-    return this.httpClient.put(`${this.constants.API_ENDPOINT}/users/${id}`, params)
+    return this.httpClient.put(`${this.constants.API_ENDPOINT}/users/update/${id}`, params)
       .pipe(map(x => {
         console.log("Updated");
         return x;
       }));
   }
+
   delete(id: string) {
-    return this.httpClient.delete(`${this.constants.API_ENDPOINT}/users/${id}`)
+    return this.httpClient.delete(`${this.constants.API_ENDPOINT}/users/delete/${id}`)
       .pipe(map(x => {
         return x;
       }));
+  }
+
+  register(data: any): Observable<any> {
+    return this.httpClient.post(this.constants.API_ENDPOINT + '/users/register', data);
   }
 }

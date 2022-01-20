@@ -13,6 +13,10 @@ import { HomeComponent } from './components/home/home.component';
 import { DatePipe } from '@angular/common';
 import { UserCreateComponent } from './components/user-create/user-create.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +25,18 @@ import { AlertComponent } from './components/alert/alert.component';
     LoginComponent,
     HomeComponent,
     UserCreateComponent,
-    AlertComponent
+    AlertComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,    
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [authInterceptorProviders,Constants,DatePipe],
   bootstrap: [AppComponent]
