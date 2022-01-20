@@ -47,7 +47,7 @@ export class ChangePasswordComponent implements OnInit {
           this.isSuccess = true;
         },
         error: err => {
-          this.errorMessage = err.error.message;
+          this.errorMessage = err.error.password;
           this.isPasswordMatch = true;
 
         }
