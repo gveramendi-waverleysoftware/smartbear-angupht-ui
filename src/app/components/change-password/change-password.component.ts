@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-change-password',
@@ -18,7 +20,12 @@ export class ChangePasswordComponent implements OnInit {
   isSuccess = false;
   errorMessage = '';
   user: any;
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,private alertService: AlertService) { }
+  displayModal = false;
+  dialogRef!: MatDialogRef<ConfirmDialogComponent>;
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private alertService: AlertService,
+    public dialog: MatDialog) {
+    this.displayModal = false;
+  }
 
   ngOnInit(): void {
     this.authService.currentUSer().subscribe({
@@ -41,20 +48,30 @@ export class ChangePasswordComponent implements OnInit {
     }
     else {
       this.alertService.clear();
-      this.authService.changePassword(this.user.id, newPassword, confirmPassword, oldPassword).subscribe({
-        next: data => {
-          this.tokenStorage.saveToken(data.access);
-          this.tokenStorage.saveUser(data);
-          this.isPasswordMatch = false;
-          this.isSuccess = true;
-          this.alertService.success('Password changed successfully', { keepAfterRouteChange: true });
-        },
-        error: err => {
-          this.errorMessage = err.error.password;
-          this.isPasswordMatch = true;
+      this.dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        disableClose: false
+      });
+      this.dialogRef.componentInstance.confirmMessage = "Are you sure to change your password ?";
+      this.dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.authService.changePassword(this.user.id, newPassword, confirmPassword, oldPassword).subscribe({
+            next: data => {
+              this.tokenStorage.saveToken(data.access);
+              this.tokenStorage.saveUser(data);
+              this.isPasswordMatch = false;
+              this.isSuccess = true;
+              this.alertService.success('Password changed successfully', { keepAfterRouteChange: true });
+              window.sessionStorage.clear();
+              window.location.replace('/login');
+            },
+            error: err => {
+              this.errorMessage = err.error;
+              this.isPasswordMatch = true;
 
+            }
+          })
         }
-      })
+      });
     }
   }
 }
