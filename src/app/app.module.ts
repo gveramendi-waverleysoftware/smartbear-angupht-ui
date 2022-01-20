@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DatePipe } from '@angular/common';
 import { UserCreateComponent } from './components/user-create/user-create.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { TodoModalComponent } from './components/todo-modal/todo-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AlertComponent } from './components/alert/alert.component';
     LoginComponent,
     HomeComponent,
     UserCreateComponent,
-    AlertComponent
+    AlertComponent,
+    TodoModalComponent,
   ],
   imports: [
     BrowserModule,
