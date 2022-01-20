@@ -18,7 +18,7 @@
             <td>{{(user.birthday | date:'fullDate')}}</td>
             <td style="white-space: nowrap">
                 <button  routerLink="{{user.id}}" class="btn btn-sm btn-primary">Edit</button>
-                <button (click)="deleteUser(user.id, user.firstName,user.lastName)" class="btn btn-sm btn-danger btn-delete-user" >
+                <button (click)="deleteUser(user.id, user.first_name,user.last_name)" class="btn btn-sm btn-danger btn-delete-user" >
                     <span>Delete</span>
                 </button>
                 <button
