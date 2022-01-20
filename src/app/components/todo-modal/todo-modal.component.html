@@ -11,11 +11,11 @@
             placeholder="Type a task for the user"
           />
           <div *ngFor="let task of userTask">
-            <div>
-              <span>{{ task }}</span>
+            <div>             
               <button type="button" class="btn btn-danger delete-modal" (click)="deleteTask(task)">
-                  Delete
+                  X
                 </button>
+                <span>{{ task }}</span>
             </div>
           </div>
         </div>
