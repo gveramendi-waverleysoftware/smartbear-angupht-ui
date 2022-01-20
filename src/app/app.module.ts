@@ -30,7 +30,7 @@ import { TodoModalComponent } from './components/todo-modal/todo-modal.component
     UserCreateComponent,
     AlertComponent,
     RegisterComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
     TodoModalComponent
   ],
   imports: [
